@@ -1,0 +1,79 @@
+Configuring my Linkit Smart 7688 Duo:
+These devices are more complicated than an Arduino Uno or Nano.    The 7688 DUO has an MPU with a linux server on it.
+So we have to do a bit of Linux shell work to get it setup the way we want it.  
+Most of these steps can be found in the Getting started PDF 
+or the Development guide PDF.  These are simply the steps I found the most useful.
+
+
+install microSD card
+plug in to usb
+
+  
+login to local Wifi
+	opera browser to http://mylinkit.local
+	set password
+	login
+
+download latest firmware  //  Previous firmwares had issues with the USB to U art.  This solved most of them.
+	update firmware (0.9.3)  
+	restart
+
+login to openWRS via web browser
+	opera browser to http://mylinkit.local
+	update time zone via systems tab
+	press synch with browser button
+	press save & apply button
+
+login to winSCP
+	File protocall SCP ,  Port 22
+	press add or update on security warning(if any)
+	open Putty
+	press yes on security warning(if any)
+
+enable Yun bridge
+
+	# uci set yunbridge.config.disabled=’0’
+	# uci commit
+	# reboot
+
+
+install php / configure php timezone
+
+	# opkg update
+	# opkg list php*
+	# opkg install php5 php5-cgi
+	# opkg list zoneinfo*
+	# opkg install zoneinfo-asia
+	
+
+update the /etc/config/uhttpd file to interpret php by adding this line:
+
+	list interpreter ".php=/usr/bin/php-cgi" 
+	 
+Restart uHTTPd
+
+	# /etc/init.d/uhttpd restart
+	# reboot
+
+update /etc/php.ini timezone (be sure to remove semicolin)
+
+	date.timezone = "Asia/Taipei"
+	date.default_latitude = 25.03
+	date.default_longitude = 121.56
+
+upload testphp.php to /www/ folder
+
+Open browser and test PHP 5
+	open http://mylinkit.local/testphp.php to view php config
+
+
+For Data logging Script
+/Media/SD-P1/
+	create blank file datalog.txt   
+	upload dataArchive.py 
+
+you can then setup cronjobs in the OpenWRT admin panel > System > Scheduled Tasks 
+
+0 */12 * * * python /Media/SD-P1/dataArchive.py 
+
+this script is scheduled to run every 12 hours, but you can read up on cronjobs and schedule whatever you like. 
