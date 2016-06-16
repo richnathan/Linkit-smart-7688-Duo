@@ -8,18 +8,11 @@ And its cheap!  usually under $20USD or $600NT (Taiwan).
 The perfect IoT board for small applications.
 
 Basic specs:
-MPU       MIPS 24KEc 580MHz
-
-MCU       ATmega32U4 8MHz
-
-Flash     32MB
-
-RAM       128MB
-
-WiFi      1T1R 802.11 b/g/n (2.4G)
-
-Ethernet  10/100Mbps
-
-USB       USB 2.0 Host
-
-SD-XC     SD-XC
+MPU       MIPS 24KEc 580MHz 
+MCU       ATmega32U4 8MHz 
+Flash     32MB 
+RAM       128MB 
+WiFi      1T1R 802.11 b/g/n (2.4G) 
+Ethernet  10/100Mbps 
+USB       USB 2.0 Host 
+SD        SD-XC Fat32
