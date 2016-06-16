@@ -3,7 +3,7 @@
 # Date: 5/17/16
 # For use with Linkit Smart 7688 Duo development board
 # Python script for archiving your data file to aother flatfile renamed with a time stamp.  It then opens a fresh file for more logging
-# Control this archiving script by scheduling it with a cron job
+# Control this archiving script by scheduling it with a cron job in the OpenWRT admin panel > System > Scheduled Tasks 
 # example:  0 */12 * * * python /Media/SD-P1/dataArchive.py  # every 12 hours
 # example:  5 8 * * 0 python /Media/SD-P1/dataArchive.pywould  # run 8:05 every Sunday
 # Be sure that you have an SD card (Fat32) installed
