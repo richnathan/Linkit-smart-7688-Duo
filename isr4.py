@@ -1,6 +1,6 @@
 #!/usr/bin/python 
 
-# Python script for opening a flatfile and sending the value through the yun bridge, call with FlowMeterInterrupt.ino
+# Python script for opening a flatfile and sending the value through the yun bridge, call with FlowMetertInterrupt.ino
 # made for use with Linkit Smart 7688 Duo
 # Author  Nathan Richardson
 # Date    5/25/16
