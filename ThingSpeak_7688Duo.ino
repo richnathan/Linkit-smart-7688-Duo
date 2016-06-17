@@ -24,8 +24,8 @@
 
 YunClient client;
 
-unsigned long myChannelNumber = 114432;
-const char * myWriteAPIKey = "WLOIYY7RYB6VQEIF";
+unsigned long myChannelNumber = 123456;
+const char * myWriteAPIKey = "W___YOUR_API_KEY__F";
 
 void setup() {
   // Bridge takes about two seconds to start up
