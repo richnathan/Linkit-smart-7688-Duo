@@ -72,6 +72,10 @@ For Data logging Script
 	create blank file datalog.txt   
 	upload dataArchive.py 
 
+Enable crontabs from shell..
+/etc/init.d/cron start
+/etc/init.d/cron enable
+
 you can then setup cronjobs in the OpenWRT admin panel > System > Scheduled Tasks 
 
 0 */12 * * * python /Media/SD-P1/dataArchive.py 
