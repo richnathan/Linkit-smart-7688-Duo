@@ -18,10 +18,6 @@ HttpClient c;
 
 unsigned long int avgValue;     //Store the average value of the sensor feedback
 
-//int interval = 1;            //Uint = 10 seconds, wait how many 10 seconds to sense again
-//int interval = 90;
-
-
 
 const long logInterval = 20000;
 const int systemdelay = 3000;
@@ -33,8 +29,6 @@ OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
 //ThingSpeak
-//unsigned long myChannelNumber = 124496;
-const char * myWriteAPIKey = "6P8LFI9ALCW0EGW0";
 
  
 //Xively
@@ -42,9 +36,6 @@ const char * myWriteAPIKey = "6P8LFI9ALCW0EGW0";
 // set up net client info:
  #define APIKEY        "Jr5YtuExT7JqovQPJpNhcFDivuISUjBuToMGcHwtBs3DJ4Qx"                  // replace your pachube api key here
  #define FEEDID        128680996                   // replace your feed ID
- //#define USERAGENT     "my-project"           // user agent is the project name
-//const unsigned long postingInterval = 60000;  //delay between updates to xively.com
-//unsigned long lastRequest = 0;      // when you last made a request
 String dataString = "";
 
 //  Flow Meter
@@ -101,33 +92,6 @@ if (millis() - lastLogTime > logInterval)
  
   c.get(url);
 
-/* 
- const char* hostts = "api.thingspeak.com"; 
-
-if (!client.connect(hostts, 80)) {
-    return;
-  }
-  //Construct the post...
-  String url = "/update?key=";
-  url += "&field1=";
-  url += String(t, 2);
-  url += "&field2=";
-  url += String(photo, DEC);
-  url += "&field3=";
-  url += String(waterhigh, DEC);
-  url += "&field4=";
-  url += String(pH, 2);
-  url += "&field5=";
-  url += String(tempC, 1);
-  url += "&field7=";
-  url += String(flow1_int, 2);
-  
-  client.print(String("GET ") + url + " HTTP/1.1\r\n" +
-               "Host: " + hostts + "\r\n" + 
-               "Connection: close\r\n\r\n");
-               
-               client.stop();
-*/
 
 // LED with flash when logging to thingspeak
    for (int j=1; j<=25; j=j+1) {     // Start our for loop
@@ -263,6 +227,6 @@ void flowmeter() {
   p.runShellCommand("python /IoT/isr4.py"); //Run the Python Code to generate values
   Bridge.get("90",flow1,5);  //get value from Bridge and store
   int fl2 = atoi(flow1); //convert ASCII to integer
-  flow1_int = (fl2 * 4 / 400.0);   //apply flowrate calculation ml/min, isr.py logs for 15 seconds 60/15 = 4,  for 1/8" Q= 6.5 clcks/ml
+  flow1_int = (fl2 * 4 / 400.0);   //apply flowrate calculation l/min, isr.py logs for 15 seconds 60/15 = 4,  flowmeter tested to 400 clicks/liter
 
 }
