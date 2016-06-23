@@ -1,0 +1,4 @@
+##  place in openWRT >System > Scheduled Tasks tab
+
+* * * * * python /IoT/isr.py; sleep 30; python /IoT/isr.py;
+
