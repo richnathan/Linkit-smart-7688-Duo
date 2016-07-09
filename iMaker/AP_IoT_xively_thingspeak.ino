@@ -28,22 +28,17 @@ float tempC;
 OneWire oneWire(ONE_WIRE_BUS);
 DallasTemperature sensors(&oneWire);
 
-//ThingSpeak
-
  
 //Xively
 //Xively api key for upload and download
 // set up net client info:
- #define APIKEY        "Jr5YtuExT7JqovQPJpNhcFDivuISUjBuToMGcHwtBs3DJ4Qx"                  // replace your pachube api key here
- #define FEEDID        128680996                   // replace your feed ID
+ #define APIKEY        "J_______________________x"                  // replace your pachube api key here
+ #define FEEDID        1__________6                   // replace your feed ID
 String dataString = "";
 
 //  Flow Meter
 char flow1[5];
 float flow1_int;
-
-
-  
 
 void setup() {
   Serial.begin(9600);
@@ -101,7 +96,8 @@ if (millis() - lastLogTime > logInterval)
     delay(100);  
      }            
 
-dataString = "field1,";
+// Data string for sending data to Xively
+  dataString = "field1,";
   dataString += String(t, 2);
   dataString += "\nfield2,";
   dataString += String(photo, DEC);
@@ -114,13 +110,11 @@ dataString = "field1,";
   dataString += "\nfield7,";
   dataString += String(flow1_int, 2);
 
+//  Xively routine 
+sendData();
 
-     Serial.println("  Logged to Thingspeak.....  ");
-// updateData();
-  sendData();
+     Serial.println("  Logged to Thingspeak.a and Xively....  ");
 
-  
-  
   }
  
     
@@ -230,3 +224,4 @@ void flowmeter() {
   flow1_int = (fl2 * 4 / 400.0);   //apply flowrate calculation l/min, isr.py logs for 15 seconds 60/15 = 4,  flowmeter tested to 400 clicks/liter
 
 }
+
