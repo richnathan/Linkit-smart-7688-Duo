@@ -1,4 +1,11 @@
 
+# Aquaponics IoT monitor
+# revised 7/10/16 by Nathan Richardson
+# added Dallas one wire temperature probe, flow meter and Xively data logging
+# this script is optimized for use with Linkit Smart 7688 duo development board
+# Open Source
+
+
 #include <Bridge.h>
 //#include "YunClient.h"
 #include <HttpClient.h>
@@ -71,7 +78,7 @@ if (millis() - lastLogTime > logInterval)
     lastLogTime = millis();
      Serial.println("  Logging to thingspeak, Please wait..... ");
 
- String url = "http://api.thingspeak.com/update?key=6P8LFI9ALCW0EGW0";
+ String url = "http://api.thingspeak.com/update?key=6____your_thingspeak_key_0";
   url += "&field1=";
   url += String(t, 2);
   url += "&field2=";
